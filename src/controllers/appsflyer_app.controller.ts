@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import axios, {AxiosRequestConfig} from "axios";
 import _ from "lodash";
+import appModel from "@/models/app.model";
 import { AnyArray } from 'mongoose';
 import { HttpException } from '@/exceptions/HttpException';
 var cookie = require('cookie');
@@ -221,7 +222,14 @@ class AppsflyerAppController {
             const appRegistredInfo = await this.registerApplicationInAppsFlyer(credentials.get("af_jwt"), credentials.get("auth_tkt"), packageName)
 
             if (appRegistredInfo.data.ok) {
-              res.send({ succeess: true })
+
+              const model = new appModel({
+                packageName 
+              })
+
+              model.save()
+
+              res.send({ succeess: true, devKey: "xrKyNZZe4Hf3PYmzDW4wGZ" })
             } else {
               res.send({ succeess: false, errorType: "appExists" })
             }
@@ -232,7 +240,6 @@ class AppsflyerAppController {
           }
         } catch (e) {
           res.send({ succeess: false, errorType: "serverError" })
-          next(e);
         }
 
       }
