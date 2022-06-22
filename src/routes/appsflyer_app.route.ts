@@ -5,7 +5,7 @@ import { threadId } from 'worker_threads';
 import { request } from 'http';
 
 class AppsflyerAppRoute implements Routes {
-  public path = '/appsflyer/app';
+  public path = '/api/appsflyer/app';
   public router = Router();
   public appsflyerAppController = new AppsflyerAppController();
 
