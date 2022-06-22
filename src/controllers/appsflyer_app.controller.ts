@@ -229,17 +229,17 @@ class AppsflyerAppController {
 
               model.save()
 
-              res.send({ succeess: true, devKey: "xrKyNZZe4Hf3PYmzDW4wGZ" })
+              res.send({ success: true, devKey: "xrKyNZZe4Hf3PYmzDW4wGZ" })
             } else {
-              res.send({ succeess: false, errorType: "appExists" })
+              res.send({ success: false, errorType: "appExists" })
             }
 
           } else {
-            res.send({ succeess: false, errorType: "appExists" })
+            res.send({ success: false, errorType: "appExists" })
           
           }
         } catch (e) {
-          res.send({ succeess: false, errorType: "serverError" })
+          res.send({ success: false, errorType: "serverError" })
         }
 
       }
